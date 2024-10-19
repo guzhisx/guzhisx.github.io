@@ -17,6 +17,7 @@ jobs:
       with:
         to: ${{ secrets.TG_ID }}
         token: ${{ secrets.TG_TOKEN }}
+        parse_mode: "HTML"
         message: |
           ${{ github.actor }} создал новый коммит: ${{ github.event.commits[0].message }}
           Ссылка на коммит: https://github.com/${{ github.repository }}/commit/${{github.sha}}
@@ -24,6 +25,7 @@ jobs:
             
           CI/CD github actions: https://github.com/${{ github.repository }}/actions
           https://github.com/${{ github.repository }}/actions/runs/${{github.run_id}}
+          <b>Тестирую, что будет приходить увед при пуше в мейн</b>
     - name: Checkout
       uses: actions/checkout@v4
     - name: Пройти проверки HTML5 Validator
